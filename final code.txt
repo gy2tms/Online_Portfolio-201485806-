@@ -1,0 +1,73 @@
+###### Final condensed model.py #######
+
+#Imported libraries
+import matplotlib.pyplot
+import time
+import agentframework
+import csv
+
+#Time started for processing the code
+start = time.perf_counter()
+
+# Opening the text csv data and reading it in
+environment = []
+f = open("in.txt")
+reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
+for row in reader:  
+    rowlist = []
+    environment.append(rowlist)
+    for value in row: 
+        #print(value)
+        rowlist.append(value)
+    #print(rowlist)
+f.close()
+#print(environment)
+
+#Denotes the size of the environment
+print(len(environment))
+print(len(environment[0]))
+
+#Setting the agent factors and list
+number_of_agents = 10
+number_of_iterations = 100
+neighbourhood = 20
+agents = []
+
+#Distance between the agents 
+def distance_between(agents_row_a, agents_row_b):
+    return (((agents_row_a.x - agents_row_b.x)**2) + ((agents_row_a.y - agents_row_b.y)**2))**0.5
+
+#Make the agents 
+for i in range(number_of_agents):
+     agents.append(agentframework.Agent(environment, agents))
+
+#Move the agents
+for j in range(number_of_iterations):
+    for i in range(number_of_agents):
+        
+        agents[i].move()
+        agents[i].eat()
+        agents[i].share_with_neighbours(neighbourhood)
+
+#Plotted grid size
+matplotlib.pyplot.ylim(0, 100)
+matplotlib.pyplot.xlim(0, 100)
+#Plotting the environment and agents
+matplotlib.pyplot.imshow(environment)
+for i in range(number_of_agents):
+    matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
+matplotlib.pyplot.show()
+
+#east = max(agents, key=operator.itemgetter(1))
+#matplotlib.pyplot.scatter(east[1],east[0], color='red')
+
+#Distance between the agents
+for agents_row_a in agents:
+    for agents_row_b in agents:
+        distance = distance_between(agents_row_a, agents_row_b)
+
+#print(distance)
+
+#Time finished for processed code and written
+end = time.perf_counter()
+print("time = " + str(end - start))
