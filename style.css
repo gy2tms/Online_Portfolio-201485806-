@@ -1,13 +1,14 @@
 h1 {
- color: green;
- font-family: calibri-body;
- border: 5px solid grey;
+ color: darkseagreen;
+ font-family: sans-serif;
+ border: thin solid grey;
  display: inline;
  }
 
 p1,p2 {
  color: black;
  font-size: 20px;
+ font-family: sans-serif
 }
 
 p3 {
@@ -15,5 +16,5 @@ p3 {
  fonti-size: 20px;
  background-color: darkseagreen;
  border: thin solid grey;
-
+ font-family: sans-serif:
 }
