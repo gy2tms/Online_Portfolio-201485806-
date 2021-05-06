@@ -5,12 +5,15 @@ import matplotlib.pyplot
 import time
 import agentframework
 import csv
+import matplotlib.animation
 
 #Time started for processing the code
 start = time.perf_counter()
 
-# Opening the text csv data and reading it in
+#Creating the Environment list
 environment = []
+
+# Opening the text csv data and reading it in
 f = open("in.txt")
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
 for row in reader:  
@@ -21,53 +24,79 @@ for row in reader:
         rowlist.append(value)
     #print(rowlist)
 f.close()
-#print(environment)
+print(environment)
 
-#Denotes the size of the environment
-print(len(environment))
-print(len(environment[0]))
+#Prints the dimenisons of the raster grid 
+width = (len(environment))
+length = (len(environment[0]))
+print("Raster grid equals = " + str(width) + "x" + str(length))
 
-#Setting the agent factors and list
+#Setting the agent factors and agent list
 number_of_agents = 10
-number_of_iterations = 100
+number_of_iterations = 10
 neighbourhood = 20
 agents = []
+
+#Denoting the size of the popup window
+fig = matplotlib.pyplot.figure(figsize=(7, 7))
+#ax = fig.add_axes([0, 0, 1, 1])
+
+#ax.set_autoscale_on(False)
 
 #Distance between the agents 
 def distance_between(agents_row_a, agents_row_b):
     return (((agents_row_a.x - agents_row_b.x)**2) + ((agents_row_a.y - agents_row_b.y)**2))**0.5
 
-#Make the agents 
+#Make the agents from the framework 
 for i in range(number_of_agents):
-     agents.append(agentframework.Agent(environment, agents))
+    agents.append(agentframework.Agent(environment, agents))
 
-#Move the agents
-for j in range(number_of_iterations):
-    for i in range(number_of_agents):
+carry_on = True	
+''' Boolean class, returns true if x = true, otherwise false and stops '''
+
+def update(frame_number):
+       
+    #Move the agents
+    for j in range(number_of_iterations):
+        for i in range(number_of_agents):
         
-        agents[i].move()
-        agents[i].eat()
-        agents[i].share_with_neighbours(neighbourhood)
+            agents[i].move()
+            agents[i].eat()
+            agents[i].share_with_neighbours(neighbourhood)
+    
+    for i in range(number_of_agents):
+           matplotlib.pyplot.scatter(agents[i].x,agents[i].y)    
+
+#Generates the characteristics of the animation 
+def gen_function(b = [0]):
+    a = 0
+    global carry_on
+    while (a < 10) & (carry_on) :
+        yield a			
+        a = a + 1
+
+fig.clear()
 
 #Plotted grid size
 matplotlib.pyplot.ylim(0, 100)
 matplotlib.pyplot.xlim(0, 100)
-#Plotting the environment and agents
-matplotlib.pyplot.imshow(environment)
-for i in range(number_of_agents):
-    matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
+matplotlib.pyplot.imshow(environment)             
 matplotlib.pyplot.show()
 
-#east = max(agents, key=operator.itemgetter(1))
-#matplotlib.pyplot.scatter(east[1],east[0], color='red')
+#Animates the agents within the environment and plots them
+animation = matplotlib.animation.FuncAnimation(fig, update, frames=gen_function, repeat=False)
+matplotlib.pyplot.show()
 
 #Distance between the agents
 for agents_row_a in agents:
     for agents_row_b in agents:
         distance = distance_between(agents_row_a, agents_row_b)
-
-#print(distance)
+print("Distance between agents = " + str(distance))
 
 #Time finished for processed code and written
 end = time.perf_counter()
 print("time = " + str(end - start))
+
+
+
+
