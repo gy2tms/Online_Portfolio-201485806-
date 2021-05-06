@@ -7,10 +7,10 @@ CONTENTS:
   'in.txt' = The raster data used within the model 
   
 WHAT THE SOFTWARE IS: 
-  These python source code files program a basic frameowrk of a agent based model
+  These python source code files program a basic framework of an 'agent based model'
   
 HOW TO RUN THE CODE:
-  To efficiently run this model both the 'model.py', 'agentframework' and 'in.txt' files need to be
+  To efficiently run this model, both the 'model.py', 'agentframework' and 'in.txt' files need to be
   downloaded and saved within a singular directory.
   
   The 'model.py' is then to be run first within a programming console to which it will extract data 
@@ -18,14 +18,15 @@ HOW TO RUN THE CODE:
 
 WHAT IS EXPECTED FROM THE CODE:
   This set of code has been produced to provide a framework for an agent based model. Once the code 
-  is run, the model reads in the raster data follwed by producing and altering a adaptable quantity of 
-  agents witihin a plotted grid, the characteristics of the agents processing and actions can be altered
-  to the users desire within the source code. Finally a animated output is producing showing the agents
-  moving throughout the environment
+  is run, the model reads in the raster data follwed by producing and altering an adaptable quantity of 
+  agents witihin a plotted grid. The agents processing attributes and actions can be altered
+  to the users desired context and needs within the source code. Finally an animated output is produced
+  showing the agents moving throughout the environment, with printed outputs detailing relevant information
+  of both the raster data and the script.
   
 FUTURE ALTERATIONS OR IDEAS:
-  This code could be adapted with time to as a GUI to web scrape the internet for data without being
-  intrusive in the source code itself, allowing for a more easily and more efficiently altering set 
+  This code could be adapted with time to be used as a GUI to web scrape the internet for data without being
+  intrusive within the source code itself, allowing for an easier and more efficient alteration of the set 
   code and the respective outputs 
 
 
