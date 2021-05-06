@@ -14,9 +14,10 @@ start = time.perf_counter()
 environment = []
 
 # Opening the text csv data and reading it in
-f = open("in.txt")
+f = open("in.txt") 
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
 for row in reader:  
+    #Creating the Row list
     rowlist = []
     environment.append(rowlist)
     for value in row: 
@@ -29,18 +30,22 @@ print(environment)
 #Prints the dimenisons of the raster grid 
 width = (len(environment))
 length = (len(environment[0]))
+''' len returns the number of items in said container'''
 print("Raster grid equals = " + str(width) + "x" + str(length))
 
-#Setting the agent factors and agent list
+#Setting the agent factors 
 number_of_agents = 10
 number_of_iterations = 10
 neighbourhood = 20
+
+#Creating the Agent list
 agents = []
 
 #Denoting the size of the popup window
 fig = matplotlib.pyplot.figure(figsize=(7, 7))
-#ax = fig.add_axes([0, 0, 1, 1])
 
+#Optional size configurations of plotted window
+#ax = fig.add_axes([0, 0, 1, 1])
 #ax.set_autoscale_on(False)
 
 #Distance between the agents 
@@ -55,7 +60,7 @@ carry_on = True
 ''' Boolean class, returns true if x = true, otherwise false and stops '''
 
 def update(frame_number):
-       
+    '''def the frame number of the agents movement'''
     #Move the agents
     for j in range(number_of_iterations):
         for i in range(number_of_agents):
@@ -69,6 +74,8 @@ def update(frame_number):
 
 #Generates the characteristics of the animation 
 def gen_function(b = [0]):
+    ''' gen_function is a standalone function 
+    all plotting characteristics'''
     a = 0
     global carry_on
     while (a < 10) & (carry_on) :
@@ -85,6 +92,7 @@ matplotlib.pyplot.show()
 
 #Animates the agents within the environment and plots them
 animation = matplotlib.animation.FuncAnimation(fig, update, frames=gen_function, repeat=False)
+''' Boolean class, repeat = False so repeat does not run '''
 matplotlib.pyplot.show()
 
 #Distance between the agents
@@ -96,6 +104,11 @@ print("Distance between agents = " + str(distance))
 #Time finished for processed code and written
 end = time.perf_counter()
 print("time = " + str(end - start))
+
+#MODEL DOCUMENTATION ELEMENTS#
+#Printed doc.strings for documentation
+print(update.__doc__)
+print(gen_function.__doc__)
 
 
 
