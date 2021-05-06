@@ -16,6 +16,15 @@ HOW TO RUN THE CODE:
   The 'model.py' is then to be run first within a programming console to which it will extract data 
   and processing function from the remaining two files.
 
+WHAT IS EXPECTED FROM THE CODE:
+  This set of code has been produced to provide a framework for an agent based model. Once the code 
+  is run, the model 
+  
+FUTURE ALTERATIONS OR IDEAS:
+  This code could be adapted with time to as a GUI to web scrape the internet for data without being
+  intrusive in the source code itself, allowing for a more easily and more efficiently altering set 
+  code and the respective outputs 
+
 
 
  
