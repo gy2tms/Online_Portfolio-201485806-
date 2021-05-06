@@ -18,7 +18,10 @@ HOW TO RUN THE CODE:
 
 WHAT IS EXPECTED FROM THE CODE:
   This set of code has been produced to provide a framework for an agent based model. Once the code 
-  is run, the model 
+  is run, the model reads in the raster data follwed by producing and altering a adaptable quantity of 
+  agents witihin a plotted grid, the characteristics of the agents processing and actions can be altered
+  to the users desire within the source code. Finally a animated output is producing showing the agents
+  moving throughout the environment
   
 FUTURE ALTERATIONS OR IDEAS:
   This code could be adapted with time to as a GUI to web scrape the internet for data without being
